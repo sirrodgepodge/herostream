@@ -9,7 +9,8 @@ app.use(express.static(__dirname + '/static/'));
 console.log(__dirname);
 
 app.get('/', function(request, response) {
-	response.sendFile(__dirname + '/static/index.html');
+    response.sendFile(__dirname + '/static/index.html');
+    response.end();
 });
 
 app.listen(8060);

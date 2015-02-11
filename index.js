@@ -8,6 +8,7 @@ app.use(express.static(__dirname + '/static'));
 
 app.get('/', function(request, response) {
   response.sendFile(__dirname + '/static/index.html');
+  response.end();
 })
 
 app.listen(app.get('port'), function() {
