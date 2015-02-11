@@ -1,0 +1,150 @@
+/* Initial body */
+body {
+  left: 0;
+  margin: 0;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Initial menu */
+.menu {
+  background: 	#000000;
+  left: -285px;  /* start off behind the scenes */
+  height: 100%;
+  position: fixed;
+  width: 285px;
+  z-index: 4;
+}
+
+.bio {
+  background: 	#000000;
+  right: -285px;  /* start off behind the scenes */
+  height: 100%;
+  position: fixed;
+  width: 285px;
+}
+
+/* Basic styling */
+
+.jumbotron {
+  background: url('images/stevejobs.jpg');
+  background-repeat: no-repeat;
+  background-position: 0px 0px;
+  height: 100%;
+  z-index: -1;
+  -webkit-filter: grayscale(100%);
+     -moz-filter: grayscale(100%);
+       -o-filter: grayscale(100%);
+          filter: grayscale(100%);
+  -webkit-background-size: cover;
+     -moz-background-size: cover;
+       -o-background-size: cover;
+          background-size: cover;
+}
+
+ul {
+  border-top: 1px solid #636366;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  border-bottom: 1px solid #636366;
+  font-family: 'Open Sans', sans-serif;
+  line-height: 45px;
+  padding-bottom: 3px;
+  padding-left: 20px;
+  padding-top: 3px;
+}
+
+a {
+  color: #fff;
+  font-size: 15px;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.icon-close {
+  cursor: pointer;
+  padding-left: 10px;
+  padding-top: 10px;
+}
+
+.icon {
+  color: #C0C0C0;
+  cursor: pointer;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.icon-menu {
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  padding-bottom: 25px;
+  padding-left: 25px;
+  padding-top: 25px;
+}
+
+.icon-bio {
+  position: fixed;
+  right: 0px;
+  top: 0px;
+  padding-bottom: 25px;
+  padding-right: 25px;
+  padding-top: 25px;
+}
+
+.icon-menu i {
+  margin-right: 5px;
+}
+
+.icon-bio i {
+  margin-left: 5px;
+}
+
+.player {
+    position: fixed;
+    margin-left: -45%;
+    margin-top: 20%;
+}
+
+.videobox {
+    position: fixed;
+    height: 40%;
+    z-index: 1;
+    border: none;
+}
+
+.videobox iframe {
+    position: absolute;
+    top:0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 10px solid black;
+    border-radius: 8px 8px 8px 8px;
+    clear: both;
+}
+
+#oval {
+	width: 200px;
+	height: 10%;
+	background: black;
+	-moz-border-radius: 0px 0px 155px 155px/0px 0px 150px 150px;
+	-webkit-border-radius: 0px 0px 155px 155px/0px 0px 150px 150px;
+	border-radius: 0px 0px 155px 155px/0px 0px 150px 150px;
+        border: 10px solid black;
+        position: fixed;
+        z-index: 2;
+}
+
+.bottombuttons {
+    position: fixed;
+    background: white;
+    cursor: pointer;
+    visibility: none;
+}
