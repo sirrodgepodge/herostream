@@ -4,7 +4,7 @@
   "description": "running static page with Node",
   "main": "index.js",
   "scripts": {
-    "start": "node runnode.js"
+    "start": "node index.js"
   },
   "dependencies": {
     "compression": "^1.4.0",
