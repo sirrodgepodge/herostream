@@ -42,7 +42,7 @@ var menuOpen = function() {
     bioClose();
 }
 
-var BioOpen = function() {
+var bioOpen = function() {
     $('.bio').animate({
       right: "0px"
     }, 200);
