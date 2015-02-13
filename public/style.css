@@ -28,7 +28,7 @@ body {
 /* Basic styling */
 
 .jumbotron {
-  background: url('images/stevejobs.jpg') 0;
+  background: url('images/stevejobs.jpg') center center;
   background-repeat: no-repeat;
   height: 100%;
   -webkit-filter: grayscale(100%);
