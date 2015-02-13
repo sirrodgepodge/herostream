@@ -69,6 +69,7 @@ a {
   cursor: pointer;
   padding-left: 10px;
   padding-top: 10px;
+  z-index: 4;
 }
 
 .icon {
