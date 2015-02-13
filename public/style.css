@@ -22,6 +22,7 @@ body {
   height: 100%;
   position: fixed;
   width: 285px;
+  z-index: 1;
 }
 
 /* Basic styling */
@@ -30,7 +31,6 @@ body {
   background: url('images/stevejobs.jpg') 0;
   background-repeat: no-repeat;
   height: 100%;
-  z-index: -1;
   -webkit-filter: grayscale(100%);
      -moz-filter: grayscale(100%);
        -o-filter: grayscale(100%);
@@ -110,6 +110,7 @@ a {
     position: fixed;
     margin-left: -45%;
     margin-top: 20%;
+    z-index: 1;
 }
 
 .videobox {
