@@ -59,17 +59,13 @@ var bioOpen = function() {
 }
 
 var main = function() {
-/* Push the body and the nav over by 285px over */
-  $('.icon-menu').click(menuOpen());
-
-  /* Then push them back */
-  $('.menu .icon-close').click(menuClose());
+  /*open and close menu*/
+  $('.icon-menu').click(menuOpen);
+  $('.menu .icon-close').click(menuClose);
   
-  /* Push the body and the nav over by 285px over */
-  $('.icon-bio').click(bioOpen());
-
-  /* Then push them back */
-  $('.bio .icon-close').click(bioClose());
+  /*open and close bio*/
+  $('.icon-bio').click(bioOpen);
+  $('.bio .icon-close').click(bioClose);
 
 /*Mouse Over steps*/
 
