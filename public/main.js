@@ -10,7 +10,7 @@ var menuClose = function() {
     $('.icon-menu').animate({
       left: "0px"
     }, 200);
-}
+};
 
 var bioClose = function() {
     $('.bio').animate({
@@ -24,7 +24,7 @@ var bioClose = function() {
     $('.jumbotron').animate({
       backgroundPosition: "0px"
     }, 200);
-}
+};
 
 var menuOpen = function() {
     $('.menu').animate({
@@ -40,7 +40,7 @@ var menuOpen = function() {
     }, 200);
 
     bioClose();
-}
+};
 
 var bioOpen = function() {
     $('.bio').animate({
@@ -56,7 +56,7 @@ var bioOpen = function() {
     }, 200);
 
     menuClose();
-}
+};
 
 var main = function() {
   /*open and close menu*/
@@ -73,15 +73,13 @@ var main = function() {
     if ($(this).css('background-color') === 'rgb(255, 255, 255)') {
         $(this).css('background-color', 'lightblue')
         }
-    }
-  );
+  });
 
   $('.bottombuttons').mouseleave(function() {
     if ($(this).css('background-color') === 'rgb(173, 216, 230)') {
         $(this).css('background-color', 'white')
         }
-    }
-  );
+  });
 
   $('#thumbup').click(
       function() {
@@ -95,8 +93,7 @@ var main = function() {
           else {
               $('#thumbup').css('background-color', 'lightblue')
           }
-      }
-  );
+  });
 
   $('#thumbdown').click(
       function() {
@@ -110,8 +107,7 @@ var main = function() {
           else {
               $('#thumbdown').css('background-color', 'lightblue')
           }
-      }
-  );
+  });
 
   $('#nextbutton').click(function() {
       setTimeout($('#nextbutton').css('background-color', '#736AFF'), 155);
@@ -125,20 +121,20 @@ var videosizer = function() {
     $('.videobox').css({'width':(cw * 4/3) +'px'});
     $('#oval').css({'width':(cw * 4/3) +'px'})
     $('#oval').css({'marginTop': (cw + 10) +'px'});
-    $('.player').css({'marginTop': (cw *.75) +'px'});
+    $('.player').css({'marginTop': (cw * 0.75) +'px'});
     $('.bottombuttons').css({'height': ($('#oval').height()) + 'px'})
 //    var thumbwidth = $('#thumbup').width();
-    var thumbwidth = .15;
-    $('#thumbup').css({'marginLeft': (cw * .16) +'px'})
-    $('#thumbdown').css({'marginLeft': (cw * 4/3 - cw* 4/3 * thumbwidth - cw * .67) +'px'})
-    $('#nextbutton').css({'marginLeft': (cw * 4/3 - cw* 4/3 * thumbwidth - cw * .33) +'px'})
+    var thumbwidth = 0.15;
+    $('#thumbup').css({'marginLeft': (cw * 0.16) +'px'})
+    $('#thumbdown').css({'marginLeft': (cw * 4/3 - cw* 4/3 * thumbwidth - cw * 0.67) +'px'})
+    $('#nextbutton').css({'marginLeft': (cw * 4/3 - cw* 4/3 * thumbwidth - cw *0.33) +'px'})
     if($('.player').marginLeft != "24px") {
         $('.player').css({'visibility': 'visible'})
 	$('.player').animate({
 		marginLeft: "24px"
         }, 600);
     }
-}
+};
 
 
 $(window).resize(videosizer);
