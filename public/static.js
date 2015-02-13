@@ -1,6 +1,32 @@
-var main = function() {
-/* Push the body and the nav over by 285px over */
-  $('.icon-menu').click(function() {
+var menuClose = function() {
+    $('.menu').animate({
+      left: "-285px"
+    }, 200);
+
+    $('.player').animate({
+      marginLeft: "24px"
+    }, 200);
+
+    $('.icon-menu').animate({
+      left: "0px"
+    }, 200);
+}
+
+var bioClose = function() {
+    $('.bio').animate({
+      right: "-285px"
+    }, 200);
+
+    $('.icon-bio').animate({
+      right: "0px"
+    }, 200);
+
+    $('.jumbotron').animate({
+      backgroundPosition: "0px"
+    }, 200);
+}
+
+var menuOpen = function() {
     $('.menu').animate({
       left: "0px"
     }, 200);
@@ -8,47 +34,19 @@ var main = function() {
     $('.player').animate({
       marginLeft: "309px"
     }, 200);
-  
+
     $('.icon-menu').animate({
       left: "285px"
     }, 200);
-    
-    $('.bio').animate({
-      right: "-285px"
-    }, 200);
-  
-    $('.icon-bio').animate({
-      right: "0px"
-    }, 200);
-  
-    $('.jumbotron').animate({
-      backgroundPosition: "0px"
-    }, 200);
-    
-  });
 
-  /* Then push them back */
-  $('.menu .icon-close').click(function() {
-    $('.menu').animate({
-      left: "-285px"
-    }, 200);
+    bioCLose();
+}
 
-    $('.player').animate({
-      marginLeft: "24px"
-    }, 200);
-    
-    $('.icon-menu').animate({
-      left: "0px"
-    }, 200);
-    
-  });
-  
-  /* Push the body and the nav over by 285px over */
-  $('.icon-bio').click(function() {
+var BioOpen = function() {
     $('.bio').animate({
       right: "0px"
     }, 200);
-    
+
     $('.icon-bio').animate({
       right: "285px"
     }, 200);
@@ -56,36 +54,22 @@ var main = function() {
     $('.jumbotron').animate({
       backgroundPosition: "-285px"
     }, 200);
-    
-    $('.menu').animate({
-      left: "-285px"
-    }, 200);
-    
-    $('.player').animate({
-      marginLeft: "24px"
-    }, 200);
-    
-    $('.icon-menu').animate({
-      left: "0px"
-    }, 200);
-    
-  });
+
+    menuClose();
+}
+
+var main = function() {
+/* Push the body and the nav over by 285px over */
+  $('.icon-menu').click(menuOpen());
 
   /* Then push them back */
-  $('.bio .icon-close').click(function() {
-    $('.bio').animate({
-      right: "-285px"
-    }, 200);
+  $('.menu .icon-close').click(menuClose());
+  
+  /* Push the body and the nav over by 285px over */
+  $('.icon-bio').click(bioOpen());
 
-    $('.jumbotron').animate({
-      backgroundPosition: "0px"
-    }, 200);
-
-    $('.icon-bio').animate({
-      right: "0px"
-    }, 200);
-
-  });
+  /* Then push them back */
+  $('.bio .icon-close').click(bioClose());
 
 /*Mouse Over steps*/
 
