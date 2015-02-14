@@ -112,7 +112,7 @@ var main = function() {
   $('#nextbutton').click(function() {
       setTimeout($('#nextbutton').css('background-color', '#736AFF'), 155);
       $('#currentvid').attr('src', '//www.youtube.com/embed/QFVsVnczYqY?rel=0&autoplay=1');
-      $('.jumbotron').css('background', "url('/images/peterthiel.jpg') 0");
+      $('.jumbotron').css('background', "url('/images/peterthiel.jpg')");
   });
 };
 
