@@ -1,7 +1,0 @@
-{
-  "name": "Static page launched with node",
-  "description": "Me trying stuff out",
-  "repository": "https://github.com/heroku/old-heroflow"
-  "logo": "https://mysterious-wildwood-7311.herokuapp.com/node.svg",
-  "keywords": ["node", "express", "static"]
-}
