@@ -1,7 +1,0 @@
-{
-  "name": "Static page launched with node",
-  "description": "Me trying stuff out",
-  "repository": "https://github.com/heroku/herostream",
-  "logo": "https://herostream.herokuapp.com/node.svg",
-  "keywords": ["node", "express", "passport"]
-}
