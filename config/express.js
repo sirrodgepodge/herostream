@@ -38,7 +38,7 @@ module.exports = function (passport, mongodbURI) {
     app.use(passport.initialize());
     app.use(passport.session());
 
-    app.use(express.static(root + '/public'));
+    app.use(express.static(root + '/p__2'));
 
     if ('development' == app.get('env')) {
         app.use(errorHandler());
