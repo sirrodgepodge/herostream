@@ -61,8 +61,7 @@ a {
 
 .icon-close {
   cursor: pointer;
-  padding-left: 10px;
-  padding-top: 10px;
+  padding-right: 10px;
   z-index: 4;
 }
 
