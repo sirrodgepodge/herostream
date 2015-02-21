@@ -5,7 +5,7 @@ var fs = require('fs'),
     mongodbURI = 'mongodb://heroflow:heroflow@ds047591.mongolab.com:47591/herodb', /* For example: mongodb://<dbuser>:<dbpassword>@host.com:port/my-app-db */
     facebookAppId = '1559371857666734',
     facebookAppSecret = '56470ced89703228ac405356a25514f3',
-    models_path = __dirname + '/app/models',
+    models_path = __dirname + '/app/models';
 
 mongoose.connect(mongodbURI);
 

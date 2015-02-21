@@ -31,14 +31,14 @@ module.exports = function (passport, mongodbURI) {
         secret: 'my-session-store',
         store: new mongoStore({
             url: mongodbURI,
-            collection : 'sessions'
+            collection : 'users'
         })
     }));//something with logins
 
     app.use(passport.initialize());
     app.use(passport.session());
 
-    app.use(express.static(root + '/p__2'));
+    app.use(express.static(root + '/p_2'));
 
     if ('development' == app.get('env')) {
         app.use(errorHandler());
