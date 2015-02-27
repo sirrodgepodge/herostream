@@ -36,11 +36,12 @@ module.exports = function (passport, facebookAppId, facebookAppSecret) {
                     if (err) {
                         console.log(err);
                     }
-                    return done(err, profile);
+                    return done(err, user);
                 });
             } else {
-                return done(err, profile);
+                return done(err, user);
             }
         });
+	done(null, profile);
     }));
 };
