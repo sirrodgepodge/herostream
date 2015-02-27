@@ -1,7 +1,7 @@
 angular.module('SPAAuth').factory('sessionService', ['$rootScope', '$window', '$http',
     function ($rootScope, $window, $http) {
     var session = {
-        init: function () {
+        init: function() {
             this.resetSession();
         },
         resetSession: function() {
