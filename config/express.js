@@ -12,7 +12,7 @@ var express = require('express'),
 
 module.exports = function (passport, mongodbURI) {
     var app = express();
-    app.use(compression());
+    //app.use(compression());
 
     var root = path.normalize(__dirname + '/..');
 

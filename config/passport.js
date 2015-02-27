@@ -11,7 +11,7 @@ module.exports = function (passport, facebookAppId, facebookAppSecret) {
     });
 
     passport.deserializeUser(function(id, done) {
-        User.findOne({ _id: id }, function (err, user) {
+        User.findOne(id, function (err, user) {
             done(err, user);
         });
     });
