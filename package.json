@@ -4,7 +4,7 @@
   "description": "running static page with Node",
   "main": "index.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node app.js"
   },
   "dependencies": {
     "body-parser": "latest",
