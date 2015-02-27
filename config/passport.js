@@ -20,9 +20,10 @@ module.exports = function (passport, facebookAppId, facebookAppSecret) {
         clientID: facebookAppId,
         clientSecret: facebookAppSecret,
         callbackURL: '/auth/facebook/callback'
-    }, function(accessToken, refreshToken, profile, done) {
+    }, 
+    function(accessToken, refreshToken, profile, done) {
         User.findOne({ 'facebook.id': profile.id }, function (err, user) {
-            if (err) { return done(err); }
+            if (err) return done(err);
             if (!user) {
                 user = new User({
                     name: profile.displayName,
@@ -33,15 +34,12 @@ module.exports = function (passport, facebookAppId, facebookAppSecret) {
                     facebook: profile._json
                 });
                 user.save(function (err) {
-                    if (err) {
-                        console.log(err);
-                    }
+                    if (err) console.log(err);
                     return done(err, user);
                 });
             } else {
                 return done(err, user);
             }
         });
-	//done(null, profile);
     }));
 };
