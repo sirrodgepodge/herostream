@@ -42,6 +42,6 @@ module.exports = function (passport, facebookAppId, facebookAppSecret) {
                 return done(err, user);
             }
         });
-	done(null, profile);
+	//done(null, profile);
     }));
 };
