@@ -1,5 +1,5 @@
 var mongoose = require('mongoose'),
-    User = require('../app/models/user'),
+    User = require('../app/models/user.js'),
     FacebookStrategy = require('passport-facebook').Strategy;
     //GoogleStrategy = require('passport-google').Strategy;
 
