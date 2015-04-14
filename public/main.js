@@ -1,10 +1,13 @@
+var playerScoot = 24;
+var menuWidth = 285;
+
 var menuClose = function() {
     $('.menu').animate({
-      left: "-285px"
+      left: menuWidth*-1 + "px"
     }, 200);
 
     $('.player').animate({
-      marginLeft: "24px"
+      marginLeft: playerScoot + "px"
     }, 200);
 
     $('.icon-menu').animate({
@@ -14,7 +17,7 @@ var menuClose = function() {
 
 var bioClose = function() {
     $('.bio').animate({
-      right: "-285px"
+      right: menuWidth*-1 + "px"
     }, 200);
 
     $('.icon-bio').animate({
@@ -32,11 +35,11 @@ var menuOpen = function() {
     }, 200);
 
     $('.player').animate({
-      marginLeft: "309px"
+      marginLeft: menuWidth + playerScoot + "px"
     }, 200);
 
     $('.icon-menu').animate({
-      left: "285px"
+      left: menuWidth + "px"
     }, 200);
 
     bioClose();
@@ -48,11 +51,11 @@ var bioOpen = function() {
     }, 200);
 
     $('.icon-bio').animate({
-      right: "285px"
+      right: menuWidth + "px"
     }, 200);
     
     $('.jumbotron').animate({
-      backgroundPosition: "-285px"
+      backgroundPosition: menuWidth*-1 + "px"
     }, 200);
 
     menuClose();
@@ -61,11 +64,11 @@ var bioOpen = function() {
 var main = function() {
     /*open and close menu*/
     $('.icon-menu').click(menuOpen);
-    $('.menu .icon-close').click(menuClose);
+    $('.menu').find('.icon-close').click(menuClose);
     
     /*open and close bio*/
     $('.icon-bio').click(bioOpen);
-    $('.bio .icon-close').click(bioClose);
+    $('.bio').find('.icon-close').click(bioClose);
 
     /*Mouse Over steps*/
 
