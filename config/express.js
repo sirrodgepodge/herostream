@@ -12,7 +12,7 @@ var express = require('express'),
 
 module.exports = function (passport, mongodbURI) {
     var app = express();
-    app.use(compression());
+    //app.use(compression());
 
     var root = path.normalize(__dirname + '/..');
 
@@ -22,7 +22,6 @@ module.exports = function (passport, mongodbURI) {
     app.set('views', root + '/app/views');
     app.set('view engine', 'ejs');
     app.use(favicon(root + '/p_2/favicon.ico'));//sets tiny icon
-    app.use(morgan('dev'));//sets logger
     app.use(bodyParser.urlencoded({extended:false}));//easy retrieval of HTML body
     app.use(bodyParser.json());//easy retrieval of HTML body
     app.use(methodOverride());//more flexible HTTP verb usage
@@ -42,6 +41,7 @@ module.exports = function (passport, mongodbURI) {
     app.use(passport.session());
 
     app.use(express.static(root + '/p_2'));
+    app.use(morgan('dev'));//sets logger, after static to avoid logging static requests
 
     if ('development' == app.get('env')) {
         app.use(errorHandler());

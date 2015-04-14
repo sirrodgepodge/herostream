@@ -1,5 +1,5 @@
 var mongoose = require('mongoose'),
-    User = require('../app/models/user'),
+    User = require('../app/models/user.js'),
     FacebookStrategy = require('passport-facebook').Strategy;
     //GoogleStrategy = require('passport-google').Strategy;
 
@@ -11,7 +11,7 @@ module.exports = function (passport, facebookAppId, facebookAppSecret) {
     });
 
     passport.deserializeUser(function(id, done) {
-        User.findOne({ _id: id }, function (err, user) {
+        User.findOne(id, function (err, user) {
             done(err, user);
         });
     });
@@ -20,9 +20,10 @@ module.exports = function (passport, facebookAppId, facebookAppSecret) {
         clientID: facebookAppId,
         clientSecret: facebookAppSecret,
         callbackURL: '/auth/facebook/callback'
-    }, function(accessToken, refreshToken, profile, done) {
+    }, 
+    function(accessToken, refreshToken, profile, done) {
         User.findOne({ 'facebook.id': profile.id }, function (err, user) {
-            if (err) { return done(err); }
+            if (err) return done(err);
             if (!user) {
                 user = new User({
                     name: profile.displayName,
@@ -33,9 +34,7 @@ module.exports = function (passport, facebookAppId, facebookAppSecret) {
                     facebook: profile._json
                 });
                 user.save(function (err) {
-                    if (err) {
-                        console.log(err);
-                    }
+                    if (err) console.log(err);
                     return done(err, user);
                 });
             } else {

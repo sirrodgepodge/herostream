@@ -15,10 +15,8 @@ fs.readdirSync(models_path).forEach(function(file) {
     }
 });
 
-require('./config/passport')(passport, facebookAppId, facebookAppSecret);
-
 var app = require('./config/express')(passport, mongodbURI);
-
+require('./config/passport')(passport, facebookAppId, facebookAppSecret);
 require('./config/routes')(app, passport);
 
 http.createServer(app).listen(app.get('port'), function(){
