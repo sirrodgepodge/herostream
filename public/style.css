@@ -144,3 +144,11 @@ a {
     cursor: pointer;
     visibility: none;
 }
+
+.hover {
+    background-color: rgb(173,216,230);
+}
+
+.selected {
+    background-color: rgb(115,106,255);
+}

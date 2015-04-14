@@ -50,7 +50,7 @@ var bioOpen = function() {
     $('.icon-bio').animate({
       right: "285px"
     }, 200);
-
+    
     $('.jumbotron').animate({
       backgroundPosition: "-285px"
     }, 200);
@@ -59,60 +59,35 @@ var bioOpen = function() {
 };
 
 var main = function() {
-  /*open and close menu*/
-  $('.icon-menu').click(menuOpen);
-  $('.menu .icon-close').click(menuClose);
-  
-  /*open and close bio*/
-  $('.icon-bio').click(bioOpen);
-  $('.bio .icon-close').click(bioClose);
+    /*open and close menu*/
+    $('.icon-menu').click(menuOpen);
+    $('.menu .icon-close').click(menuClose);
+    
+    /*open and close bio*/
+    $('.icon-bio').click(bioOpen);
+    $('.bio .icon-close').click(bioClose);
 
-/*Mouse Over steps*/
+    /*Mouse Over steps*/
 
-  $('.bottombuttons').mouseenter(function() {
-    if ($(this).css('background-color') === 'rgb(255, 255, 255)') {
-        $(this).css('background-color', 'lightblue');
-        }
-  });
+    $('.bottombuttons').filter('.notSelected').hover(function() {
+	$(this).addClass('hover');
+    },function(){
+	(this).removeClass('hover');
+    });
 
-  $('.bottombuttons').mouseleave(function() {
-    if ($(this).css('background-color') === 'rgb(173, 216, 230)') {
-        $(this).css('background-color', 'white');
-        }
-  });
+    $('.thumbs').filter('.notSelected').click(function(){
+	var notSel = $(this).filter('.notSelected');
+	$(this).filter('.selected').removeClass('selected').addClass('notSelected');
+	notSel.addClass('selected').removeClass('notSelected');
+    });
 
-  $('#thumbup').click(
-      function() {
-          if ($('#thumbdown').css('background-color') === 'rgb(115, 106, 255)') {
-              $('#thumbdown').css('background-color', 'white');
-          }
-
-          if ($('#thumbup').css('background-color') === 'rgb(173, 216, 230)') {
-              $('#thumbup').css('background-color', '#736AFF');
-          }
-          else {
-              $('#thumbup').css('background-color', 'lightblue');
-          }
-  });
-
-  $('#thumbdown').click(
-      function() {
-          if ($('#thumbup').css('background-color') === 'rgb(115, 106, 255)') {
-              $('#thumbup').css('background-color', 'white');
-          }
-
-          if ($('#thumbdown').css('background-color') === 'rgb(173, 216, 230)') {
-              $('#thumbdown').css('background-color', '#736AFF');
-          }
-          else {
-              $('#thumbdown').css('background-color', 'lightblue');
-          }
-  });
-
-  $('#nextbutton').click(function() {
-      setTimeout($('#nextbutton').css('background-color', '#736AFF'), 155);
-      $('#currentvid').attr('src', '//www.youtube.com/embed/QFVsVnczYqY?rel=0&autoplay=1');
-      $('.jumbotron').css('background', "url('/images/peterthiel.jpg') 0 /cover");
+    $('#nextbutton').click(function() {
+	$(this).removeClass('notSelected').addClass('selected');
+	setTimeout(function(){
+	    $(this).removeClass('selected').addClass('notSelected');
+	}, 250);
+	$('#currentvid').attr('src', '//www.youtube.com/embed/QFVsVnczYqY?rel=0&autoplay=1');
+	$('.jumbotron').css('background', "url('/images/peterthiel.jpg') 0 /cover");
   });
 };
 
@@ -136,7 +111,6 @@ var videosizer = function() {
     }
 };
 
-
 $(window).resize(videosizer);
 $(window).bind('load', videosizer);
-$(document).ready(main, videosizer);
+$(document).ready(main);
