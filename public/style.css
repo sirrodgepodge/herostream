@@ -8,20 +8,19 @@ body {
 
 /* Initial menu */
 .menu {
-  background: 	#000000;
+    background: #000000;
+    height: 100%;
+    position: fixed;
+    width: 285 px;
+}
+
+#menu {
   left: -285px;  /* start off behind the scenes */
-  height: 100%;
-  position: fixed;
-  width: 285px;
   z-index: 4;
 }
 
-.bio {
-  background: 	#000000;
+#bio {
   right: -285px;  /* start off behind the scenes */
-  height: 100%;
-  position: fixed;
-  width: 285px;
   z-index: 1;
 }
 
@@ -73,49 +72,44 @@ a {
   font-size: 16px;
   text-decoration: none;
   text-transform: uppercase;
-}
-
-.icon-menu {
   position: fixed;
   left: 0px;
   top: 0px;
   padding-bottom: 25px;
+  padding-top: 25px;
+}
+
+#icon-menu {
   padding-left: 25px;
-  padding-top: 25px;
 }
 
-.icon-bio {
-  position: fixed;
-  right: 0px;
-  top: 0px;
-  padding-bottom: 25px;
+#icon-bio {
   padding-right: 25px;
-  padding-top: 25px;
 }
 
-.icon-menu i {
+#icon-menu i {
   margin-right: 5px;
 }
 
-.icon-bio i {
+#icon-bio i {
   margin-left: 5px;
 }
 
-.player {
+#player {
     position: fixed;
     margin-left: -45%;
     margin-top: 20%;
     z-index: 1;
 }
 
-.videobox {
+#video-box {
     position: fixed;
     height: 40%;
     z-index: 1;
     border: none;
 }
 
-.videobox iframe {
+#video-box iframe {
     position: absolute;
     top:0;
     left: 0;
@@ -138,7 +132,7 @@ a {
         z-index: 2;
 }
 
-.bottombuttons {
+#oval img {
     position: fixed;
     background: white;
     cursor: pointer;
