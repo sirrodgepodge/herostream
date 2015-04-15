@@ -75,7 +75,7 @@ var main = function() {
     $('.bottombuttons').filter('.notSelected').hover(function() {
 	$(this).addClass('hover');
     },function(){
-	(this).removeClass('hover');
+	$(this).removeClass('hover');
     });
 
     $('.thumbs').filter('.notSelected').click(function(){
