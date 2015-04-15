@@ -87,7 +87,7 @@ var main = function() {
     $('#nextbutton').click(function() {
 	$(this).addClass('selected');
 	setTimeout(function(){
-	    $(this).removeClass('selected');
+	    $('#nextbutton').removeClass('selected');
 	}, 250);
 	$('#currentvid').attr('src', '//www.youtube.com/embed/QFVsVnczYqY?rel=0&autoplay=1');
 	$('.jumbotron').css('background', "url('/images/peterthiel.jpg') 0 /cover");
