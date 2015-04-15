@@ -72,22 +72,22 @@ var main = function() {
 
     /*Mouse Over steps*/
 
-    $('.bottombuttons').filter('.notSelected').hover(function() {
+    $('.bottombuttons').not('.selected').hover(function() {
 	$(this).addClass('hover');
     },function(){
 	$(this).removeClass('hover');
     });
 
-    $('.thumbs').filter('.notSelected').click(function(){
-	var notSel = $(this).filter('.notSelected');
-	$(this).filter('.selected').removeClass('selected').addClass('notSelected');
-	notSel.addClass('selected').removeClass('notSelected');
+    $('.thumbs').not('.selected').click(function(){
+	var notSel = $(this).not('.selected');
+	$('.thumbs').filter('.selected').removeClass('selected');
+	notSel.addClass('selected');
     });
 
     $('#nextbutton').click(function() {
-	$(this).removeClass('notSelected').addClass('selected');
+	$(this).addClass('selected');
 	setTimeout(function(){
-	    $(this).removeClass('selected').addClass('notSelected');
+	    $(this).removeClass('selected');
 	}, 250);
 	$('#currentvid').attr('src', '//www.youtube.com/embed/QFVsVnczYqY?rel=0&autoplay=1');
 	$('.jumbotron').css('background', "url('/images/peterthiel.jpg') 0 /cover");
