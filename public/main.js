@@ -2,21 +2,22 @@
 var playerScoot = 24;
 var menuWidth = 285;
 
-var $player = $('#player')
-var $videobox = $('#videobox');
+//jQuery object vars
+var $playerBox = $('#player-box');
+var $videoBox = $('#video-box');
 var $oval = $('#oval');
 var $menu = $('#menu');
 var $bio = $('#bio');
 var $iconMenu = $('#icon-menu');
 var $iconBio = $('#icon-bio');
 var $jumbotron = $('.jumbotron');
-var $currentVid = $('#current-vid')
 var $bottomButtons = $('#oval').find('img');
 var $nextButton = $('#next-button');
 var $thumbs = $('.thumbs');
 var $thumbUp = $('#thumb-up');
 var $thumbDown = $('#thumb-down');
 
+//handle opening and closing menus
 var menuClose = function() {
     $menu.animate({
       left: menuWidth*-1 + "px"
@@ -77,59 +78,109 @@ var bioOpen = function() {
     menuClose();
 };
 
+//Creates interactive UI
 var main = function() {
-    /*open and close menu*/
-    $iconMenu.click(menuOpen);
-    $menu.find('.icon-close').click(menuClose);
+    //Open and close menu
+    $iconMenu.on('click', menuOpen);
+    $menu.on('click', '.icon-close', menuClose);
     
-    /*open and close bio*/
-    $iconBio.click(bioOpen);
-    $bio.find('.icon-close').click(bioClose);
+    //Open and close bio
+    $iconBio.on('click', bioOpen);
+    $bio.on('click', '.icon-close', bioClose);
 
-    /*Mouse Over steps*/
-
-    $bottomButtons.not('.selected').hover(function() {
-	$(this).addClass('hover');
-    },function(){
-	$(this).removeClass('hover');
-    });
-
+    //Handle like and dislike selection
     $thumbs.not('.selected').click(function(){
 	var notSel = $(this).not('.selected');
 	$thumbs.filter('.selected').removeClass('selected');
 	notSel.addClass('selected');
     });
-
-    $nextButton.click(function() {
-	$(this).addClass('selected');
-	setTimeout(function(){
-	    $nextButton.removeClass('selected');
-	}, 250);
-	$currentVid.attr('src', '//www.youtube.com/embed/QFVsVnczYqY?rel=0&autoplay=1');
-	$jumbotron.css('background', "url('/images/peterthiel.jpg') 0 /cover");
-  });
 };
+$(document).ready(main);
 
+//Handles playerbox sizing
 var videosizer = function() {
-    var cw = $videobox.height();
-    
-    $videobox.css({'width':(cw * 4/3) +'px'});
+    var cw = $videoBox.height();
+    $videoBox.css({'width':(cw * 4/3) +'px'});
     $oval.css({'width':(cw * 4/3) +'px'}).css({'marginTop': (cw + 10) +'px'});
-    $player.css({'marginTop': (cw * 0.75) +'px'});
+    $playerBox.css({'marginTop': (cw * 0.75) +'px'});
     $bottombuttons.css({'height': ($oval.height()) + 'px'});
 //    var thumbwidth = $('#thumbup').width();
     var thumbwidth = 0.15;
     $thumbUp.css({'marginLeft': (cw * 0.16) +'px'});
     $thumbDown.css({'marginLeft': (cw * 4/3 - cw* 4/3 * thumbwidth - cw * 0.67) +'px'});
     $nextButton.css({'marginLeft': (cw * 4/3 - cw* 4/3 * thumbwidth - cw *0.33) +'px'});
-    if($player.marginLeft != "24px") {
-        $player.css({'visibility': 'visible'});
-	$player.animate({
+    if($playerBox.marginLeft != "24px") {
+        $playerBox.css({'visibility': 'visible'});
+	$playerBox.animate({
 		marginLeft: "24px"
         }, 600);
     }
 };
-
 $(window).resize(videosizer);
 $(window).bind('load', videosizer);
-$(document).ready(main);
+
+//Handles changing videos
+function onYoutubeIframeAPIReady() {
+    /*
+    //Once player is loaded
+      function onPlayerReady(event) {
+      }
+    */
+
+    //When current video finishes
+    function onPlayerStateChange(event) {
+        if(event.date == 0){
+            nextVid();
+        }
+    }
+
+    //Create video player objects
+    var playerEvents = {
+        events: {
+            //'onReady': onPlayerReady,
+            'onStateChange': onPlayerStateChange,
+            'onError': nextVid
+        }
+    };
+    
+    //store two player objects in an array for pre-loading purposes
+    var player = [new YT.Player('vid1', playerEvents),
+                  new YT.Player('vid2', playerEvents)];
+
+    //variable to track which player is currently displayed
+    var whichVid = 0;
+
+    //go to next video
+    var nextVid = function(callback) {
+	////handle css
+	//shows pre-loaded player, hides current player
+	var $currVid = $('video-box').find('iframe').not('.next-vid');
+        $('.next-vid').removeClass('next-vid');
+        $currVid.addClass('.next-vid');
+        $jumbotron.css('background', "url('/images/peterthiel.jpg') 0 /cover");
+        
+        ////handles player API
+	//stop current video in current player
+	player[whichVid].stopVideo();
+	//pre-loads next after next
+        player[whichVid].loadVideoById({
+            videoId: 'NU7W7qe2R0A',
+            startSeconds: 0,
+            endSeconds: 10
+        });
+	//switches selected player
+	whichVid = 1-whichVid;
+	//play next
+	player[whichVid].playVideo();
+
+	//run callback if provided
+	typeof callback === 'function' && callback();
+    };
+    
+    //handles clicking next button
+    $nextButton.on('click', function() {
+	$this = $(this);
+	$this.addClass('selected');
+	nextVid($this.removeClass('selected'));
+    });
+}

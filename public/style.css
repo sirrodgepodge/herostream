@@ -95,7 +95,7 @@ a {
   margin-left: 5px;
 }
 
-#player {
+#player-box {
     position: fixed;
     margin-left: -45%;
     margin-top: 20%;
@@ -139,10 +139,14 @@ a {
     visibility: none;
 }
 
-.hover {
+.bottom-buttons:not(.selected):hover {
     background-color: rgb(173,216,230);
 }
 
 .selected {
     background-color: rgb(115,106,255);
+}
+
+.next-vid {
+    visibility: hidden;
 }
