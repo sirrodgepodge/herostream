@@ -90,16 +90,16 @@ var main = function() {
 
     //Handle like and dislike selection
     $thumbs.not('.selected').click(function(){
-	var notSel = $(this).not('.selected');
-	$thumbs.filter('.selected').removeClass('selected');
-	notSel.addClass('selected');
+	$thumbs.each(function() {
+	    $(this).toggleClass('.selected');
+	});
     });
 };
 $(document).ready(main);
 
 //Handles playerbox sizing
-var videosizer = function() {
-    var cw = $videoBox.height();
+var videosizer = function(callback) {
+    var cw = +$videoBox.height();
     $videoBox.css({'width':(cw * 4/3) +'px'});
     $oval.css({'width':(cw * 4/3) +'px'}).css({'marginTop': (cw + 10) +'px'});
     $playerBox.css({'marginTop': (cw * 0.75) +'px'});
@@ -109,15 +109,19 @@ var videosizer = function() {
     $thumbUp.css({'marginLeft': (cw * 0.16) +'px'});
     $thumbDown.css({'marginLeft': (cw * 4/3 - cw* 4/3 * thumbwidth - cw * 0.67) +'px'});
     $nextButton.css({'marginLeft': (cw * 4/3 - cw* 4/3 * thumbwidth - cw *0.33) +'px'});
-    if($playerBox.marginLeft != "24px") {
-        $playerBox.css({'visibility': 'visible'});
-	$playerBox.animate({
-		marginLeft: "24px"
-        }, 600);
-    }
+    typeof callback === 'function' && callback();
 };
+
+//Animates playerbox entrance
+var playerScootch = function() {
+    $playerBox.css({'visibility': 'visible'});
+    $playerBox.animate({
+        marginLeft: "24px"
+    }, 600);
+};
+
 $(window).resize(videosizer);
-$(window).bind('load', videosizer);
+$(window).bind('load', videosizer(playerScootch));
 
 //Handles changing videos
 function onYoutubeIframeAPIReady() {
@@ -154,10 +158,12 @@ function onYoutubeIframeAPIReady() {
     var nextVid = function(callback) {
 	////handle css
 	//shows pre-loaded player, hides current player
-	var $currVid = $('video-box').find('iframe').not('.next-vid');
-        $('.next-vid').removeClass('next-vid');
-        $currVid.addClass('.next-vid');
-        $jumbotron.css('background', "url('/images/peterthiel.jpg') 0 /cover");
+	$videoBox.find('iframe').each(function() {
+	    $(this).toggleClass('next-vid');
+	});
+	//switches background image
+	//////figure out how to pre-load background images and swap!!!!
+	$jumbotron.css('background', "url('/images/peterthiel.jpg') 0 /cover");
         
         ////handles player API
 	//stop current video in current player
