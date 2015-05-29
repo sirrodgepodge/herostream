@@ -23,7 +23,7 @@ var menuClose = function() {
       left: menuWidth*-1 + "px"
     }, 200);
 
-    $player.animate({
+    $playerBox.animate({
       marginLeft: playerScoot + "px"
     }, 200);
 
@@ -51,7 +51,7 @@ var menuOpen = function() {
       left: "0px"
     }, 200);
 
-    $player.animate({
+    $playerBox.animate({
       marginLeft: menuWidth + playerScoot + "px"
     }, 200);
 
@@ -109,7 +109,7 @@ var videosizer = function(callback) {
     $thumbUp.css({'marginLeft': (cw * 0.16) +'px'});
     $thumbDown.css({'marginLeft': (cw * 4/3 - cw* 4/3 * thumbwidth - cw * 0.67) +'px'});
     $nextButton.css({'marginLeft': (cw * 4/3 - cw* 4/3 * thumbwidth - cw *0.33) +'px'});
-    typeof callback === 'function' && callback();
+    if(typeof callback==='function') callback();
 };
 
 //Animates playerbox entrance

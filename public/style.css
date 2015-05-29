@@ -3,7 +3,9 @@ body {
   left: 0;
   margin: 0;
   overflow: hidden;
-  position: relative;
+  position: absolute;
+  height: 100%;
+  width: 100%;
 }
 
 /* Initial menu */
@@ -11,7 +13,7 @@ body {
     background: #000000;
     height: 100%;
     position: fixed;
-    width: 285 px;
+    width: 285px;
 }
 
 #menu {
@@ -27,8 +29,10 @@ body {
 /* Basic styling */
 
 .jumbotron {
+  position: absolute;
   background-repeat: no-repeat;
   height: 100%;
+  width:100%;
   -webkit-filter: grayscale(100%);
      -moz-filter: grayscale(100%);
        -o-filter: grayscale(100%);
@@ -73,17 +77,18 @@ a {
   text-decoration: none;
   text-transform: uppercase;
   position: fixed;
-  left: 0px;
   top: 0px;
   padding-bottom: 25px;
   padding-top: 25px;
 }
 
 #icon-menu {
+  left: 0px;
   padding-left: 25px;
 }
 
 #icon-bio {
+  right: 0px;
   padding-right: 25px;
 }
 
